@@ -89,11 +89,11 @@ write_files:
     BITGET_SECRET="d8843c00e3ef03cce41a14eaf326f7a86e3335f053be984b92f3e47ae0a20b82"
     BITGET_PASSPHRASE="dldnjsgud"
     
-    # 비트겟 데모 트레이딩 (새로 추가)
+    # 비트겟 데모 트레이딩 (새로 추가 - 실제 키로 변경 필요!)
     BITGET_DEMO_MODE="true"
-    BITGET_DEMO_KEY="여기에_비트겟_데모_API_키_입력"
-    BITGET_DEMO_SECRET="여기에_비트겟_데모_시크릿_키_입력"
-    BITGET_DEMO_PASSPHRASE="dldnjsgud"
+    BITGET_DEMO_KEY="여기에_실제_비트겟_데모_API_키_입력"
+    BITGET_DEMO_SECRET="여기에_실제_비트겟_데모_시크릿_키_입력"
+    BITGET_DEMO_PASSPHRASE="여기에_실제_패스프레이즈_입력"
     
     KIS1_KEY="PSTSii3nZWq2tsmHZvqNSC8xANlcIQniDfBC"
     KIS1_SECRET="suuUEpTVgZFGUrnQtPJMZVYNkGhJuk3zEp2s3bqicBNhRV1JPjZY3brASjkgtNu0a0uCh2m44f1T6XWluKSYgxUvrG4s+HckVaZG8tvdDpG9Gh/yjhJ+LDJ/jeeYyZvh+Yrt/UEXICg1sCeOzSPpnC2+aqfWt/0GR/jDHMVo+kp4+qDGaVI="

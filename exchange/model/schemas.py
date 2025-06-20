@@ -144,7 +144,11 @@ def get_extra_order_info(order_info):
     }
     if order_info["exchange"] in CRYPTO_EXCHANGES:
         extra_order_info["is_crypto"] = True
-        if any([order_info["quote"].endswith(code) for code in crypto_futures_code]):
+        # 비트겟의 경우 entry/close로 선물 구분, .P로도 구분
+        is_futures_by_side = order_info["side"] in ("entry/buy", "entry/sell", "close/buy", "close/sell")
+        is_futures_by_quote = any([order_info["quote"].endswith(code) for code in crypto_futures_code])
+        
+        if is_futures_by_side or is_futures_by_quote:
             extra_order_info["is_futures"] = True
         else:
             extra_order_info["is_spot"] = True
@@ -240,14 +244,24 @@ class OrderRequest(BaseModel):
         values["quote"] = parse_quote(values["quote"])
         base = values["base"]
         quote = values["quote"]
-        unified_symbol = f"{base}/{quote}"
         exchange = values["exchange"]
+        
+        # 기본 심볼 설정
+        unified_symbol = f"{base}/{quote}"
+        
+        # 거래소별 선물 심볼 처리
         if values["is_futures"]:
-            if quote == "USD":
-                unified_symbol = f"{base}/{quote}:{base}"
-                values["is_coinm"] = True
-            else:
-                unified_symbol = f"{base}/{quote}:{quote}"
+            if exchange == "BITGET":
+                # 비트겟은 선물도 기본 형태 사용 (BTC/USDT)
+                # ccxt가 자동으로 올바른 심볼로 매핑
+                unified_symbol = f"{base}/{quote}"
+            elif exchange in ("BINANCE", "BYBIT", "OKX"):
+                # 다른 거래소는 기존 로직 유지
+                if quote == "USD":
+                    unified_symbol = f"{base}/{quote}:{base}"
+                    values["is_coinm"] = True
+                else:
+                    unified_symbol = f"{base}/{quote}:{quote}"
 
         if not values["is_stock"]:
             values["unified_symbol"] = unified_symbol

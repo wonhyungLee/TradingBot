@@ -23,10 +23,12 @@ class KoreaInvestment:
         self.key = key
         self.secret = secret
         self.kis_number = kis_number
+        self.account_code = account_code
+        # 계좌코드가 29이면 모의투자, 그 외에는 실전투자
         self.base_url = (
-            BaseUrls.base_url.value
-            if kis_number != 4
-            else BaseUrls.paper_base_url.value
+            BaseUrls.paper_base_url.value
+            if account_code == "29"
+            else BaseUrls.base_url.value
         )
         self.is_auth = False
         self.account_number = account_number
@@ -95,8 +97,10 @@ class KoreaInvestment:
                 return False
             else:
                 if not self.is_auth:
+                    # 계좌에 따라 검증 서버도 구분
+                    check_url = f"{self.base_url}/uapi/domestic-stock/v1/quotations/inquire-ccnl"
                     response = self.session.get(
-                        "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-ccnl",
+                        check_url,
                         headers={
                             "authorization": f"BEARER {access_token}",
                             "appkey": key,
@@ -127,7 +131,8 @@ class KoreaInvestment:
 
     def create_auth(self, key: str, secret: str):
         data = {"grant_type": "client_credentials", "appkey": key, "appsecret": secret}
-        base_url = BaseUrls.base_url.value
+        # 계좌에 따라 토큰 서버도 구분
+        base_url = self.base_url  # 실전/모의 구분
         endpoint = "/oauth2/tokenP"
 
         url = f"{base_url}{endpoint}"

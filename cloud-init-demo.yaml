@@ -111,6 +111,37 @@ write_files:
     KIS4_SECRET="5ZwxdZDgrpPSWyRoUDtFBXokeMjPCHfzCVv3geDAHItJ190QAZ5GBU9RbMoVdXD7EvQ8Adl3S/zIi3+8tYtCTnkQ9w7hZHb2N1asxA3ETqZ+Y2WJxJOVnjDKa7UZG3yM9KANde0m5+BiUGRifOviNFo61L2ya4ZCeodcr/3AVn5B5gdGkcc="
     KIS4_ACCOUNT_NUMBER="50139358"
     KIS4_ACCOUNT_CODE="01"
+    
+    # 추가된 계좌들 (KIS5~KIS10) - 실제 키로 변경 필요!
+    KIS5_KEY="여기에_실제_한투_API_키5_입력"
+    KIS5_SECRET="여기에_실제_한투_시크릿_키5_입력"
+    KIS5_ACCOUNT_NUMBER="계좌번호5"
+    KIS5_ACCOUNT_CODE="01"
+    
+    KIS6_KEY="여기에_실제_한투_API_키6_입력"
+    KIS6_SECRET="여기에_실제_한투_시크릿_키6_입력"
+    KIS6_ACCOUNT_NUMBER="계좌번호6"
+    KIS6_ACCOUNT_CODE="01"
+    
+    KIS7_KEY="여기에_실제_한투_API_키7_입력"
+    KIS7_SECRET="여기에_실제_한투_시크릿_키7_입력"
+    KIS7_ACCOUNT_NUMBER="계좌번호7"
+    KIS7_ACCOUNT_CODE="01"
+    
+    KIS8_KEY="여기에_실제_한투_API_키8_입력"
+    KIS8_SECRET="여기에_실제_한투_시크릿_키8_입력"
+    KIS8_ACCOUNT_NUMBER="계좌번호8"
+    KIS8_ACCOUNT_CODE="01"
+    
+    KIS9_KEY="여기에_실제_한투_API_키9_입력"
+    KIS9_SECRET="여기에_실제_한투_시크릿_키9_입력"
+    KIS9_ACCOUNT_NUMBER="계좌번호9"
+    KIS9_ACCOUNT_CODE="01"
+    
+    KIS10_KEY="여기에_실제_한투_API_키10_입력"
+    KIS10_SECRET="여기에_실제_한투_시크릿_키10_입력"
+    KIS10_ACCOUNT_NUMBER="계좌번호10"
+    KIS10_ACCOUNT_CODE="01"
     WHITELIST=["127.0.0.1", ""]
     DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1324856227678785588/4jrC4j9ru-oB5Zxb0pTRl14bO0mtqwU1Pb_UW5VU51Nvhgr10tKUx66cIA-x78z-H6lF"
     PORT="80"

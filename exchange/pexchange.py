@@ -31,6 +31,12 @@ class Exchange(BaseModel):
     KIS2: KoreaInvestment | None = None
     KIS3: KoreaInvestment | None = None
     KIS4: KoreaInvestment | None = None
+    KIS5: KoreaInvestment | None = None
+    KIS6: KoreaInvestment | None = None
+    KIS7: KoreaInvestment | None = None
+    KIS8: KoreaInvestment | None = None
+    KIS9: KoreaInvestment | None = None
+    KIS10: KoreaInvestment | None = None
 
     class Config:
         arbitrary_types_allowed = True
@@ -121,7 +127,7 @@ def check_key(exchange_name):
             log_message(msg)
             raise HTTPException(status_code=404, detail=msg)
         return key, secret, passphrase
-    elif exchange_name in ("KIS1", "KIS2", "KIS3", "KIS4"):
+    elif exchange_name in ("KIS1", "KIS2", "KIS3", "KIS4", "KIS5", "KIS6", "KIS7", "KIS8", "KIS9", "KIS10"):
         key = settings_dict.get(f"{exchange_name}_KEY")
         secret = settings_dict.get(f"{exchange_name}_SECRET")
         account_number = settings_dict.get(f"{exchange_name}_ACCOUNT_NUMBER")
